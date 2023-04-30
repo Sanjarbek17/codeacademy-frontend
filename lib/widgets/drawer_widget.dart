@@ -22,7 +22,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
       child: ListView(
         children: [
           DrawerHeader(
-            child: Image.asset('LOGO.png'),
+            child: Image.network('https://telegra.ph/file/9aa2770b195550c2b113a.png'),
           ),
           ExpansionPanelList.radio(
             children: courses

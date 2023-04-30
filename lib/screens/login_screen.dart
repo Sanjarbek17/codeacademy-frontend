@@ -18,7 +18,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  String assetImage = 'LOGO.png';
+  String assetImage = 'https://telegra.ph/file/9aa2770b195550c2b113a.png';
 
   bool isvisible = true;
   String errorMessage = '';
@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(
                           width: width * 0.4,
                           height: height * 0.3,
-                          child: Image.asset(
+                          child: Image.network(
                             assetImage,
                             // fit: BoxFit.fitHeight,
                           ),
@@ -204,7 +204,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   HomeScreen.routeName,
                                 );
                               }
-                              return null;
+                              return;
                             },
                             child: Text('Login'),
                           ),

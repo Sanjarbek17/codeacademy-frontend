@@ -17,12 +17,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<String> logoUrls = [
-    'dart_logo.png',
-    'python_logo.png',
-    'django_logo.png',
-    'flutter_logo.png',
-    'ai_logo.png',
-    'codewars_logo.png',
+    'https://telegra.ph/file/e9f7ecc57e3da64ebe4f5.png',
+    'https://telegra.ph/file/910fb008e9b47236f5ea5.png',
+    'https://telegra.ph/file/36d054acce56519d7131a.png',
+    'https://telegra.ph/file/5636de791b868b639ea40.png',
+    'https://telegra.ph/file/d08a1c0ee647f38faed1e.png',
+    'https://telegra.ph/file/8d5ba55ac41ba20d98a06.png',
   ];
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -61,7 +61,7 @@ class GridItemWidget extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width / 8,
               height: MediaQuery.of(context).size.width / 8,
-              child: Image.asset(logoLink),
+              child: Image.network(logoLink),
             ),
             const SizedBox(
               height: 50,

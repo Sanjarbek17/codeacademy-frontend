@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
                 GoRoute(
                   path: 'home',
                   name: HomeScreen.routeName,
-                  builder: (context, state) => HomeScreen(),
+                  builder: (context, state) => const HomeScreen(),
                   routes: [
                     GoRoute(
                       path: 'category/:id',
