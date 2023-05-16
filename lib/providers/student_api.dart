@@ -28,4 +28,15 @@ class StudentApi with ChangeNotifier {
     // print(_students);
     notifyListeners();
   }
+
+  Future<void> deleteStudent({int? groupId}) async {
+    String path = groupId != null ? '/get-students-from-group/$groupId/' : 'student/all/';
+    Uri url = Uri(
+      scheme: 'https',
+      host: 'codeschooluzapi.pythonanywhere.com',
+      path: path,
+    );
+    // ignore: unused_local_variable
+    http.Response response = await http.post(url);
+  }
 }
