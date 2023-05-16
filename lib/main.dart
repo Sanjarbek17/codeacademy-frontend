@@ -1,3 +1,5 @@
+import 'package:codeacademy/providers/news.dart';
+import 'package:codeacademy/screens/news_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => CourseApi()),
         ChangeNotifierProvider(create: (context) => ResultApi()),
         ChangeNotifierProvider(create: (context) => AssignmentApi()),
+        ChangeNotifierProvider(create: (context) => NewsMessages()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
@@ -67,6 +70,11 @@ class MyApp extends StatelessWidget {
                           ),
                         ),
                       ],
+                    ),
+                    GoRoute(
+                      path: 'news',
+                      name: NewsScreen.routeName,
+                      builder: (context, state) => const NewsScreen(),
                     ),
                   ],
                 ),

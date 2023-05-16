@@ -1,3 +1,4 @@
+import 'package:codeacademy/screens/news_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
@@ -38,7 +39,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 12),
               child: Row(
                 children: [
                   IconButton(
@@ -79,6 +80,26 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
                     onTap: () {
+                      context.goNamed(NewsScreen.routeName);
+                    },
+                    child: Badge(
+                      label: const Text('1'),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey[350],
+                        child: Icon(
+                          Icons.newspaper_rounded,
+                          color: Colors.grey[700],
+                          size: 26,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  InkWell(
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    onTap: () {
                       context.goNamed(LoginScreen.routeName);
                     },
                     child: CircleAvatar(
@@ -89,7 +110,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         size: 26,
                       ),
                     ),
-                  )
+                  ),
+                  const SizedBox(width: 10),
                 ],
               ),
             ),
@@ -113,8 +135,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         );
                       } else {
                         Provider.of<AssignmentApi>(context, listen: false).nullAssignment();
-                        return Row(
-                          children: const [
+                        return const Row(
+                          children: [
                             LessonTapWidget(),
                             AssignmentWidget(),
                           ],
