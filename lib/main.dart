@@ -10,6 +10,7 @@ import 'providers/group_api.dart';
 import 'providers/homework_api.dart';
 import 'providers/result_api.dart';
 import 'providers/student_api.dart';
+import 'providers/teacher_api.dart';
 import 'screens/categories_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/login_screen.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => GroupApi()),
         ChangeNotifierProvider(create: (context) => HomeworkApi()),
         ChangeNotifierProvider(create: (context) => StudentApi()),
+        ChangeNotifierProvider(create: (context) => TeacherApi()),
         ChangeNotifierProvider(create: (context) => CourseApi()),
         ChangeNotifierProvider(create: (context) => ResultApi()),
         ChangeNotifierProvider(create: (context) => AssignmentApi()),

@@ -7,6 +7,8 @@ class Student {
   final String phone;
   final String? email;
   final String? tgUsername;
+  String? startDate;
+  String? endDate;
 
   Student({
     required this.id,
@@ -17,6 +19,8 @@ class Student {
     required this.phone,
     required this.codeWars,
     required this.tgUsername,
+    required this.startDate,
+    required this.endDate,
   });
 
   factory Student.getStudent(Map data) {
@@ -29,6 +33,8 @@ class Student {
       phone: data['phone'],
       codeWars: data['codewars'],
       tgUsername: data['tg_username'],
+      startDate: data['date_created'],
+      endDate: data['date_updated'],
     );
   }
 }

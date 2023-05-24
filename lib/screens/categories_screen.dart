@@ -1,4 +1,5 @@
 import 'package:codeacademy/screens/news_screen.dart';
+import 'package:codeacademy/widgets/teacher_tap_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
@@ -8,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../providers/assignment_api.dart';
 import '../providers/homework_api.dart';
 import '../providers/student_api.dart';
+import '../providers/teacher_api.dart';
 import '../widgets/assignment_widget.dart';
 import '../widgets/drawer_widget.dart';
 import '../widgets/lesson_tap_widget.dart';
@@ -161,9 +163,23 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       );
                     },
                   ),
-                  const Center(
-                    child: Text('This screen does not work'),
-                  )
+                  FutureBuilder(
+                    future: Provider.of<StudentApi>(context, listen: false).getStudent(groupId: widget.id),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (snapshot.hasError) {
+                        return Center(
+                          child: Text(snapshot.error.toString()),
+                        );
+                      }
+                      return TeacherWidget(
+                        data: Provider.of<TeacherApi>(context, listen: false).teachers,
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
