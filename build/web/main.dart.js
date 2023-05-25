@@ -46275,7 +46275,7 @@ z2(a){return this.ajq(a)},
 ajq(a){var s=0,r=A.X(t.f),q,p,o
 var $async$z2=A.Y(function(b,c){if(b===1)return A.U(c,r)
 while(true)switch(s){case 0:s=3
-return A.Z(A.aEb(A.oi(null,"codeschooluzapi.pythonanywhere.com","student/delete/"+a+"/",null,"https"),null,null),$async$z2)
+return A.Z(A.aEb(A.oi(null,"lmsapi.pythonanywhere.com","student/delete/"+a+"/",null,"https"),null,null),$async$z2)
 case 3:o=c
 if(o.b===200){q=B.aK.lM(0,A.x0(J.aQ(A.wV(o.e).c.a,"charset")).d8(0,o.w),null)
 s=1

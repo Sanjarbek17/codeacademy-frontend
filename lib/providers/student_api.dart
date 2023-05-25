@@ -35,7 +35,7 @@ class StudentApi with ChangeNotifier {
     String path = 'student/delete/$studentId/';
     Uri url = Uri(
       scheme: 'https',
-      host: 'codeschooluzapi.pythonanywhere.com',
+      host: 'lmsapi.pythonanywhere.com',
       path: path,
     );
 
@@ -54,7 +54,7 @@ class StudentApi with ChangeNotifier {
     String path = 'student/delete/$studentId/';
     Uri url = Uri(
       scheme: 'https',
-      host: 'codeschooluzapi.pythonanywhere.com',
+      host: 'lmsapi.pythonanywhere.com',
       path: path,
     );
     Map<String, String> body = {
