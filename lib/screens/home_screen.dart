@@ -38,13 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 size: 30,
               ),
             );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                snapshot.error.toString(),
-              ),
-            );
-          } else {
+          } else if (snapshot.hasData) {
             return Column(
               children: [
                 Padding(
@@ -93,6 +87,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ],
+            );
+          } else {
+            return Center(
+              child: Text(
+                snapshot.error.toString() + '\nIt means there is an error!',
+                textAlign: TextAlign.center,
+              ),
             );
           }
         },

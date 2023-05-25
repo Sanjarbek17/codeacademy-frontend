@@ -17,7 +17,7 @@ class StudentApi with ChangeNotifier {
     String path = groupId != null ? '/get-students-from-group/$groupId/' : 'student/all/';
     Uri url = Uri(
       scheme: 'https',
-      host: 'codeschooluzapi.pythonanywhere.com',
+      host: 'lmsapi.pythonanywhere.com',
       path: path,
     );
 
