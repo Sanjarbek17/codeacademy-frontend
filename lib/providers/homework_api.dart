@@ -14,7 +14,7 @@ class HomeworkApi with ChangeNotifier {
   Future<void> getHomework({required int id}) async {
     Uri url = Uri(
       scheme: 'https',
-      host: 'codeschooluzapi.pythonanywhere.com',
+      host: 'lmsapi.pythonanywhere.com',
       path: 'lesson/get/$id/',
     );
     try {

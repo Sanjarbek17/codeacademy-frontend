@@ -19,7 +19,7 @@ class NewsScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.black),
         ),
         title: Text(
-          'News',
+          'News in CODEACADEMY',
           style: GoogleFonts.monda(
             color: Colors.black,
             fontSize: 20,

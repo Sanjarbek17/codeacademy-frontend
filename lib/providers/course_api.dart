@@ -12,11 +12,11 @@ class CourseApi with ChangeNotifier {
   }
 
   Future<void> getCourse() async {
-    Uri url = Uri.parse('https://codeschooluzapi.pythonanywhere.com/course/');
+    Uri url = Uri.parse('https://lmsapi.pythonanywhere.com/course/');
     http.Response response = await http.get(url);
     List dataFromJson = jsonDecode(response.body);
     _courses = dataFromJson.map((e) => Course.getCourse(e)).toList();
-    // print(_courses[0].name);
+    print(_courses[0].name);
     notifyListeners();
   }
 }

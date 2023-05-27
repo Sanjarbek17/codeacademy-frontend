@@ -31,7 +31,7 @@ class AssignmentApi with ChangeNotifier {
   }
 
   Future<void> getAssignments(int id) async {
-    Uri url = Uri(scheme: 'https', host: 'codeschooluzapi.pythonanywhere.com', path: 'lesson/assignment/$id/');
+    Uri url = Uri(scheme: 'https', host: 'lmsapi.pythonanywhere.com', path: 'lesson/assignment/$id/');
     final response = await http.get(url);
     List data = jsonDecode(response.body);
     _allAssignment = data.map((e) => Assignment.getAssignment(e)).toList();

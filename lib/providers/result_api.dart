@@ -14,7 +14,7 @@ class ResultApi with ChangeNotifier {
   Future<void> getResult(int lessonId, int assignmentId) async {
     Uri url = Uri(
       scheme: 'https',
-      host: 'codeschooluzapi.pythonanywhere.com',
+      host: 'lmsapi.pythonanywhere.com',
       path: 'lesson/result/',
     );
     final response = await http.post(
