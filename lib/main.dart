@@ -1,4 +1,7 @@
+import 'package:codeacademy/models/student.dart';
+import 'package:codeacademy/providers/login.dart';
 import 'package:codeacademy/providers/news.dart';
+import 'package:codeacademy/screens/add_student_screen.dart';
 import 'package:codeacademy/screens/news_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -35,6 +38,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ResultApi()),
         ChangeNotifierProvider(create: (context) => AssignmentApi()),
         ChangeNotifierProvider(create: (context) => NewsMessages()),
+        ChangeNotifierProvider(create: (context) => Login()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
@@ -77,6 +81,14 @@ class MyApp extends StatelessWidget {
                       path: 'news',
                       name: NewsScreen.routeName,
                       builder: (context, state) => const NewsScreen(),
+                    ),
+                    GoRoute(
+                      path: 'add-student-to-group',
+                      name: AddStudentScreen.routeName,
+                      builder: (context, state) => AddStudentScreen(
+                        id: int.parse((state.extra as Map<String, Object>)['groupId'] as String),
+                        students: (state.extra as Map<String, Object>)['students'] as List<Student>,
+                      ),
                     ),
                   ],
                 ),

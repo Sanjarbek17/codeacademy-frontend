@@ -4,7 +4,9 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/login.dart';
 import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -199,12 +201,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: height * 0.055,
                           child: ElevatedButton(
                             onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                context.goNamed(
-                                  HomeScreen.routeName,
-                                );
-                              }
-                              return;
+                              Provider.of<Login>(context, listen: false).login(username: usernameController.text, password: passwordController.text).then((value) {
+                                if (value == "Hello, World!") {
+                                  context.goNamed(
+                                    HomeScreen.routeName,
+                                  );
+                                } else {
+                                  setState(() {
+                                    errorMessage = value;
+                                  });
+                                  _formKey.currentState!.validate();
+                                }
+                              });
                             },
                             child: Text('Login'),
                           ),

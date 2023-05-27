@@ -31,6 +31,61 @@ class StudentApi with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> getAllStudent() async {
+    String path = 'student/all/';
+    Uri url = Uri(
+      scheme: 'https',
+      host: 'lmsapi.pythonanywhere.com',
+      path: path,
+    );
+
+    http.Response response = await http.get(url);
+    // print(response.body);
+
+    List dataFromJson = jsonDecode(response.body);
+
+    _students = dataFromJson.map((e) => Student.getStudent(e)).toList();
+    // print(_students);
+    notifyListeners();
+  }
+
+  // create function that will add student to the group
+  Future<int> addStudentToGroup({required int groupId, required List<int> studentIds}) async {
+    String path = 'add-students-to-group/$groupId/';
+    Uri url = Uri(
+      scheme: 'https',
+      host: 'lmsapi.pythonanywhere.com',
+      path: path,
+    );
+    Map<String, List<int>> body = {
+      "students": studentIds,
+    };
+    http.Response response = await http.post(url, body: body);
+    print(response.statusCode);
+    print(response.reasonPhrase);
+    return response.statusCode;
+  }
+
+  Future<int> createStudent(Student item) async {
+    String path = 'student/add/';
+    Uri url = Uri(
+      scheme: 'https',
+      host: 'lmsapi.pythonanywhere.com',
+      path: path,
+    );
+    Map body = {
+      "first_name": item.firstName,
+      "last_name": item.lastName,
+      "github": item.gitHub,
+      "codewars": item.codeWars,
+      "phone": item.phone,
+      "email": item.email,
+      "tg_username": item.tgUsername,
+    };
+    http.Response response = await http.post(url, body: body);
+    return response.statusCode;
+  }
+
   Future<Map> deleteStudent({int? studentId}) async {
     String path = 'student/delete/$studentId/';
     Uri url = Uri(
