@@ -8,8 +8,8 @@ import '../providers/student_api.dart';
 
 class AddStudentScreen extends StatefulWidget {
   List<Student> students;
-  int id;
-  AddStudentScreen({super.key, required this.id, required this.students});
+  int groupId;
+  AddStudentScreen({super.key, required this.groupId, required this.students});
   static const routeName = 'add-student-to-group';
 
   @override
@@ -71,14 +71,15 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
 
           Provider.of<StudentApi>(context, listen: false)
               .addStudentToGroup(
-            groupId: widget.id,
+            groupId: widget.groupId,
             studentIds: selectedStudentIds,
           )
               .then(
             (value) {
+              print(selectedStudentIds);
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('students added')),
+                SnackBar(content: Text('Students added')),
               );
             },
           );

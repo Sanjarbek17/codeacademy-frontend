@@ -51,6 +51,19 @@ class StudentApi with ChangeNotifier {
 
   // create function that will add student to the group
   Future<int> addStudentToGroup({required int groupId, required List<int> studentIds}) async {
+    // var headers = {'Content-Type': 'application/json'};
+    // var request = http.Request('POST', Uri.parse('https://lmsapi.pythonanywhere.com/add-students-to-group/$groupId/'));
+    // request.body = json.encode({"students": studentIds});
+    // request.headers.addAll(headers);
+
+    // http.StreamedResponse response = await request.send();
+
+    // if (response.statusCode == 200) {
+    //   print(await response.stream.bytesToString());
+    // } else {
+    //   print(response.reasonPhrase);
+    // }
+    var headers = {'Content-Type': 'application/json'};
     String path = 'add-students-to-group/$groupId/';
     Uri url = Uri(
       scheme: 'https',
@@ -60,13 +73,14 @@ class StudentApi with ChangeNotifier {
     Map<String, List<int>> body = {
       "students": studentIds,
     };
-    http.Response response = await http.post(url, body: body);
+    http.Response response = await http.post(url, body: json.encode(body), headers: headers);
     print(response.statusCode);
     print(response.reasonPhrase);
     return response.statusCode;
   }
 
   Future<int> createStudent(Student item) async {
+    var headers = {'Content-Type': 'application/json'};
     String path = 'student/add/';
     Uri url = Uri(
       scheme: 'https',
@@ -82,7 +96,7 @@ class StudentApi with ChangeNotifier {
       "email": item.email,
       "tg_username": item.tgUsername,
     };
-    http.Response response = await http.post(url, body: body);
+    http.Response response = await http.post(url, body: json.encode(body), headers: headers);
     return response.statusCode;
   }
 
