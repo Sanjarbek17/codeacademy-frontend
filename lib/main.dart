@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
                       path: 'add-student-to-group',
                       name: AddStudentScreen.routeName,
                       builder: (context, state) => AddStudentScreen(
-                        id: int.parse((state.extra as Map<String, Object>)['groupId'] as String),
+                        groupId: int.parse((state.extra as Map<String, Object>)['groupId'] as String),
                         students: (state.extra as Map<String, Object>)['students'] as List<Student>,
                       ),
                     ),

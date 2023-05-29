@@ -153,7 +153,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         );
                       } else {
                         Provider.of<AssignmentApi>(context, listen: false).nullAssignment();
-                        return const Row(
+                        return Row(
                           children: [
                             LessonTapWidget(),
                             AssignmentWidget(),

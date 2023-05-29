@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import '../models/assignment.dart';
 
 class AssignmentApi with ChangeNotifier {
+  List<Assignment> demoAssignment = [];
   List<Assignment>? _allAssignment;
   int _lessonId = 0;
   bool _resultVisible = false;
@@ -36,6 +37,11 @@ class AssignmentApi with ChangeNotifier {
     List data = jsonDecode(response.body);
     _allAssignment = data.map((e) => Assignment.getAssignment(e)).toList();
     _lessonId = id;
+    notifyListeners();
+  }
+
+  addItemAsDemo(Assignment assignment) {
+    demoAssignment.add(assignment);
     notifyListeners();
   }
 }
