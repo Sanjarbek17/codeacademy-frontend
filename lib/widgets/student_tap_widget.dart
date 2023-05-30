@@ -40,11 +40,9 @@ class _StudentTapWidgetState extends State<StudentTapWidget> {
                                     if (value['status'] == 'student deleted') {
                                       setState(() {
                                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Student deleted')));
-                                        print('student deleted');
                                       });
                                     } else {
                                       setState(() {
-                                        print(value['status']);
                                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value['status'].toString())));
                                       });
                                     }
