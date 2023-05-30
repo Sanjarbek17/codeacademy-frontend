@@ -11,7 +11,7 @@ import '../providers/assignment_api.dart';
 import '../providers/homework_api.dart';
 
 class LessonTapWidget extends StatefulWidget {
-  LessonTapWidget({super.key});
+  const LessonTapWidget({super.key});
 
   @override
   State<LessonTapWidget> createState() => _LessonTapWidgetState();
@@ -94,7 +94,7 @@ class _LessonTapWidgetState extends State<LessonTapWidget> {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                    title: Text('Add lesson'),
+                    title: const Text('Add lesson'),
                     content: Column(
                       children: [
                         TextField(
@@ -143,8 +143,12 @@ class _LessonTapWidgetState extends State<LessonTapWidget> {
                                 description: _descController.text,
                               ),
                             );
+                            _descController.clear();
+                            _linkController.clear();
+                            _nameController.clear();
+                            _typeController.clear();
                           });
-                          print(Provider.of<AssignmentApi>(context, listen: false).demoAssignment);
+                          debugPrint(Provider.of<AssignmentApi>(context, listen: false).demoAssignment.toString());
                           Navigator.of(context).pop();
                         },
                         child: const Text('Add'),

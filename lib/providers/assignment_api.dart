@@ -40,6 +40,11 @@ class AssignmentApi with ChangeNotifier {
     notifyListeners();
   }
 
+  addAssingment(Assignment assignment) {
+    _allAssignment?.add(assignment);
+    notifyListeners();
+  }
+
   addItemAsDemo(Assignment assignment) {
     demoAssignment.add(assignment);
     notifyListeners();

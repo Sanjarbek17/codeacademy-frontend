@@ -58,7 +58,7 @@ class _StudentTapWidgetState extends State<StudentTapWidget> {
                             children: [
                               Text(
                                 'Student: ${student.firstName} ${student.lastName}\'s payment date!',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,

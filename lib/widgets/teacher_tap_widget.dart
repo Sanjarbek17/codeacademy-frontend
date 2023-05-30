@@ -56,7 +56,7 @@ class _TeacherWidgetState extends State<TeacherWidget> {
                             children: [
                               Text(
                                 'Teacher: ${teacher.firstName} ${teacher.lastName}\'s info!',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,

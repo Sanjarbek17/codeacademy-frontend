@@ -79,12 +79,12 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
               print(selectedStudentIds);
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Students added')),
+                const SnackBar(content: Text('Students added')),
               );
             },
           );
         },
-        label: Text('Add students'),
+        label: const Text('Add students'),
       ),
     );
   }

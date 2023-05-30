@@ -49,7 +49,7 @@ class _CustomDialogState extends State<CustomDialog> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text('Cancel'),
+          child: const Text('Cancel'),
         ),
         TextButton(
           onPressed: () {
@@ -67,7 +67,7 @@ class _CustomDialogState extends State<CustomDialog> {
             );
             Navigator.pop(context);
           },
-          child: Text('Add'),
+          child: const Text('Add'),
         ),
       ],
     );

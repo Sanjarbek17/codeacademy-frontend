@@ -15,6 +15,6 @@ class Login with ChangeNotifier {
     };
     http.Response response = await http.get(url, headers: headers);
     Map dataFromJson = jsonDecode(response.body);
-    return dataFromJson['message'] == null ? dataFromJson['detail'] : dataFromJson['message'];
+    return dataFromJson['message'] ?? dataFromJson['detail'];
   }
 }
