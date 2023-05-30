@@ -153,7 +153,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         );
                       } else {
                         Provider.of<AssignmentApi>(context, listen: false).nullAssignment();
-                        return Row(
+                        return const Row(
                           children: [
                             LessonTapWidget(),
                             AssignmentWidget(),
@@ -193,54 +193,54 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                       context: context,
                                       builder: (context) {
                                         return AlertDialog(
-                                          title: Text('Create student'),
+                                          title: const Text('Create student'),
                                           content: Column(
                                             children: [
                                               TextField(
                                                 controller: firstName,
-                                                decoration: InputDecoration(
+                                                decoration: const InputDecoration(
                                                   hintText: 'First name*',
                                                 ),
                                                 onChanged: (value) {},
                                               ),
                                               TextField(
                                                 controller: lastName,
-                                                decoration: InputDecoration(
+                                                decoration: const InputDecoration(
                                                   hintText: 'Last name*',
                                                 ),
                                                 onChanged: (value) {},
                                               ),
                                               TextField(
                                                 controller: phoneNumber,
-                                                decoration: InputDecoration(
+                                                decoration: const InputDecoration(
                                                   hintText: 'Phone number*',
                                                 ),
                                                 onChanged: (value) {},
                                               ),
                                               TextField(
                                                 controller: github,
-                                                decoration: InputDecoration(
+                                                decoration: const InputDecoration(
                                                   hintText: 'Github username*',
                                                 ),
                                                 onChanged: (value) {},
                                               ),
                                               TextField(
                                                 controller: codewars,
-                                                decoration: InputDecoration(
+                                                decoration: const InputDecoration(
                                                   hintText: 'Codewars username',
                                                 ),
                                                 onChanged: (value) {},
                                               ),
                                               TextField(
                                                 controller: email,
-                                                decoration: InputDecoration(
+                                                decoration: const InputDecoration(
                                                   hintText: 'Email*',
                                                 ),
                                                 onChanged: (value) {},
                                               ),
                                               TextField(
                                                 controller: tgUsername,
-                                                decoration: InputDecoration(
+                                                decoration: const InputDecoration(
                                                   hintText: 'Telegram username*',
                                                 ),
                                                 onChanged: (value) {},
@@ -252,7 +252,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                               onPressed: () {
                                                 Navigator.of(context).pop();
                                               },
-                                              child: Text('Cancel'),
+                                              child: const Text('Cancel'),
                                             ),
                                             TextButton(
                                               onPressed: () {
@@ -281,7 +281,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                                   }
                                                 });
                                               },
-                                              child: Text('Create'),
+                                              child: const Text('Create'),
                                             ),
                                           ],
                                         );

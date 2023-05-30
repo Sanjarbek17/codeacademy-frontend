@@ -74,8 +74,6 @@ class StudentApi with ChangeNotifier {
       "students": studentIds,
     };
     http.Response response = await http.post(url, body: json.encode(body), headers: headers);
-    print(response.statusCode);
-    print(response.reasonPhrase);
     return response.statusCode;
   }
 

@@ -38,11 +38,9 @@ class _TeacherWidgetState extends State<TeacherWidget> {
                                     if (value['status'] == 'teacher deleted') {
                                       setState(() {
                                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('teacher deleted')));
-                                        print('teacher deleted');
                                       });
                                     } else {
                                       setState(() {
-                                        print(value['status']);
                                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value['status'].toString())));
                                       });
                                     }
@@ -56,7 +54,7 @@ class _TeacherWidgetState extends State<TeacherWidget> {
                             children: [
                               Text(
                                 'Teacher: ${teacher.firstName} ${teacher.lastName}\'s info!',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,

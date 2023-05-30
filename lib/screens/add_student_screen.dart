@@ -21,7 +21,6 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     checkboxStates = List.generate(widget.students.length, (index) => false);
   }
@@ -76,15 +75,14 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
           )
               .then(
             (value) {
-              print(selectedStudentIds);
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Students added')),
+                const SnackBar(content: Text('Students added')),
               );
             },
           );
         },
-        label: Text('Add students'),
+        label: const Text('Add students'),
       ),
     );
   }
