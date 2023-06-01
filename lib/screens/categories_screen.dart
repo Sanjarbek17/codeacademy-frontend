@@ -289,28 +289,25 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                     );
                                   }),
                               const SizedBox(width: 10),
-                              FutureBuilder(
-                                future: Provider.of<StudentApi>(context, listen: false).getAllStudent(),
-                                builder: (context, snapshot) => ActionChip(
-                                  label: const Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Text('Add student this group'),
-                                  ),
-                                  onPressed: () {
-                                    context.goNamed(AddStudentScreen.routeName, extra: {
-                                      'groupId': '${widget.id}',
-                                      'students': Provider.of<StudentApi>(context, listen: false).students,
-                                      'id': widget.id,
-                                    });
-                                    // showDialog(
-                                    //   context: context,
-                                    //   builder: (context) => StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
-                                    //     return CustomDialog(groupId: widget.id);
-                                    //   }),
-                                    // );
-                                  },
+                              ActionChip(
+                                label: const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text('Add student this group'),
                                 ),
-                              )
+                                onPressed: () {
+                                  context.goNamed(AddStudentScreen.routeName, extra: {
+                                    'groupId': '${widget.id}',
+                                    'students': Provider.of<StudentApi>(context, listen: false).students,
+                                    'id': widget.id,
+                                  });
+                                  // showDialog(
+                                  //   context: context,
+                                  //   builder: (context) => StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
+                                  //     return CustomDialog(groupId: widget.id);
+                                  //   }),
+                                  // );
+                                },
+                              ),
                             ],
                           ),
                         ],
