@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
                       path: 'category/:id',
                       name: CategoriesScreen.routeName,
                       builder: (context, state) => CategoriesScreen(
-                        id: int.parse(state.params['id'] as String),
+                        id: int.parse(state.pathParameters['id'] as String),
                         groupName: state.extra.toString(),
                       ),
                       routes: [
@@ -71,8 +71,8 @@ class MyApp extends StatelessWidget {
                           path: 'results/:assignmentId/:lessonId',
                           name: ResultScreen.routeName,
                           builder: (context, state) => ResultScreen(
-                            assignmentId: int.parse(state.params['assignmentId'] as String),
-                            lessonId: int.parse(state.params['lessonId'] as String),
+                            assignmentId: int.parse(state.pathParameters['assignmentId'] as String),
+                            lessonId: int.parse(state.pathParameters['lessonId'] as String),
                           ),
                         ),
                       ],

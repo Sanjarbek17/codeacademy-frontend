@@ -87,7 +87,7 @@ class _StudentTapWidgetState extends State<StudentTapWidget> {
                                                     config: CalendarDatePicker2Config(
                                                       calendarType: CalendarDatePicker2Type.range,
                                                       currentDate: DateTime.now(),
-                                                      calendarViewMode: DatePickerMode.day,
+                                                      calendarViewMode: CalendarDatePicker2Mode.day,
                                                     ),
                                                     value: [DateTime(2023)],
                                                     onValueChanged: (dates) {

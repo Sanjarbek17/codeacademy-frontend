@@ -41,7 +41,7 @@ class GridItemWidget extends StatelessWidget {
         Provider.of<AssignmentApi>(context, listen: false).nullAssignment();
         context.goNamed(
           CategoriesScreen.routeName,
-          params: {
+          pathParameters: {
             'id': Provider.of<GroupApi>(context, listen: false).groups[0].id.toString(),
           },
           extra: Provider.of<GroupApi>(context, listen: false).groups[0].name.toString(),

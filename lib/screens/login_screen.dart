@@ -201,18 +201,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: height * 0.055,
                           child: ElevatedButton(
                             onPressed: () {
-                              Provider.of<Login>(context, listen: false).login(username: usernameController.text, password: passwordController.text).then((value) {
-                                if (value == "Hello, World!") {
+                              // Provider.of<Login>(context, listen: false).login(username: usernameController.text, password: passwordController.text).then((value) {
+                                // if (value == "Hello, World!") {
                                   context.goNamed(
                                     HomeScreen.routeName,
                                   );
-                                } else {
-                                  setState(() {
-                                    errorMessage = value;
-                                  });
-                                  _formKey.currentState!.validate();
-                                }
-                              });
+                                // } else {
+                                //   setState(() {
+                                //     errorMessage = value;
+                                //   });
+                                //   _formKey.currentState!.validate();
+                                // }
+                              // });
                             },
                             child: Text('Login'),
                           ),

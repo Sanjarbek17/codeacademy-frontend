@@ -94,7 +94,7 @@ class _SubCategoryState extends State<SubCategory> {
                     Navigator.of(context).pop();
                     context.goNamed(
                       CategoriesScreen.routeName,
-                      params: {
+                      pathParameters: {
                         'id': snapshot.data![index].id.toString(),
                       },
                       extra: snapshot.data![index].name.toString(),

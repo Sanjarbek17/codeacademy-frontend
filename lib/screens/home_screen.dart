@@ -38,12 +38,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 size: 30,
               ),
             );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                snapshot.error.toString(),
-              ),
-            );
+            // } else if (snapshot.hasError) {
+            //   return Center(
+            //     child: Text(
+            //       snapshot.error.toString(),
+            //     ),
+            //   );
           } else {
             return Column(
               children: [
