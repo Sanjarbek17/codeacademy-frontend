@@ -2,12 +2,14 @@
 
 import 'dart:convert';
 
+import 'package:codeacademy/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/student.dart';
 
 class StudentApi with ChangeNotifier {
+
   List<Student> _students = [];
   List<Student> get students {
     return _students;
@@ -15,11 +17,7 @@ class StudentApi with ChangeNotifier {
 
   Future<void> getStudent({int? groupId}) async {
     String path = groupId != null ? '/get-students-from-group/$groupId/' : 'student/all/';
-    Uri url = Uri(
-      scheme: 'https',
-      host: 'lmsapi.pythonanywhere.com',
-      path: path,
-    );
+    Uri url = Uri.parse('$baseUrl$path'); // Using baseUrl constant
 
     http.Response response = await http.get(url);
     // print(response.body);
@@ -33,11 +31,7 @@ class StudentApi with ChangeNotifier {
 
   Future<void> getAllStudent() async {
     String path = 'student/all/';
-    Uri url = Uri(
-      scheme: 'https',
-      host: 'lmsapi.pythonanywhere.com',
-      path: path,
-    );
+    Uri url = Uri.parse('$baseUrl$path'); // Using baseUrl constant
 
     http.Response response = await http.get(url);
     // print(response.body);
@@ -51,25 +45,9 @@ class StudentApi with ChangeNotifier {
 
   // create function that will add student to the group
   Future<int> addStudentToGroup({required int groupId, required List<int> studentIds}) async {
-    // var headers = {'Content-Type': 'application/json'};
-    // var request = http.Request('POST', Uri.parse('https://lmsapi.pythonanywhere.com/add-students-to-group/$groupId/'));
-    // request.body = json.encode({"students": studentIds});
-    // request.headers.addAll(headers);
-
-    // http.StreamedResponse response = await request.send();
-
-    // if (response.statusCode == 200) {
-    //   print(await response.stream.bytesToString());
-    // } else {
-    //   print(response.reasonPhrase);
-    // }
     var headers = {'Content-Type': 'application/json'};
     String path = 'add-students-to-group/$groupId/';
-    Uri url = Uri(
-      scheme: 'https',
-      host: 'lmsapi.pythonanywhere.com',
-      path: path,
-    );
+    Uri url = Uri.parse('$baseUrl$path'); // Using baseUrl constant
     Map<String, List<int>> body = {
       "students": studentIds,
     };
@@ -80,11 +58,7 @@ class StudentApi with ChangeNotifier {
   Future<int> createStudent(Student item) async {
     var headers = {'Content-Type': 'application/json'};
     String path = 'student/add/';
-    Uri url = Uri(
-      scheme: 'https',
-      host: 'lmsapi.pythonanywhere.com',
-      path: path,
-    );
+    Uri url = Uri.parse('$baseUrl$path'); // Using baseUrl constant
     Map body = {
       "first_name": item.firstName,
       "last_name": item.lastName,
@@ -100,11 +74,7 @@ class StudentApi with ChangeNotifier {
 
   Future<Map> deleteStudent({int? studentId}) async {
     String path = 'student/delete/$studentId/';
-    Uri url = Uri(
-      scheme: 'https',
-      host: 'lmsapi.pythonanywhere.com',
-      path: path,
-    );
+    Uri url = Uri.parse('$baseUrl$path'); // Using baseUrl constant
 
     http.Response response = await http.post(url);
     Map dataFromJson;
@@ -119,11 +89,7 @@ class StudentApi with ChangeNotifier {
 
   Future<void> updateStudent({int? studentId, required Map content}) async {
     String path = 'student/delete/$studentId/';
-    Uri url = Uri(
-      scheme: 'https',
-      host: 'lmsapi.pythonanywhere.com',
-      path: path,
-    );
+    Uri url = Uri.parse('$baseUrl$path'); // Using baseUrl constant
     Map<String, String> body = {
       'first_name': content['first_name'],
       'last_name': content['last_name'],

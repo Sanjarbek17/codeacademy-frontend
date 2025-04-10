@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:codeacademy/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/lesson.dart';
+
 
 class HomeworkApi with ChangeNotifier {
   List<Lesson> _homeworks = [];
@@ -12,11 +14,8 @@ class HomeworkApi with ChangeNotifier {
   }
 
   Future<void> getHomework({required int id}) async {
-    Uri url = Uri(
-      scheme: 'https',
-      host: 'lmsapi.pythonanywhere.com',
-      path: 'lesson/get/$id/',
-    );
+    String path = 'lesson/get/$id/';
+    Uri url = Uri.parse('$baseUrl$path'); // Using baseUrl constant
     try {
       http.Response response = await http.get(url);
 

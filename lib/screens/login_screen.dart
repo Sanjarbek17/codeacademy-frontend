@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
 
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:codeacademy/constants/samtuit_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,7 +21,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  String assetImage = 'https://telegra.ph/file/9aa2770b195550c2b113a.png';
+  String assetImage = logo;
 
   bool isvisible = true;
   String errorMessage = '';
@@ -67,17 +68,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           repeatForever: true,
                           animatedTexts: [
                             TyperAnimatedText(
-                              'WELCOME  TO\nCODEACADEMY',
+                              'WELCOME  TO\nSAMTUIT',
                               textStyle: animatedTextStyle,
                               speed: const Duration(milliseconds: 100),
                               textAlign: TextAlign.center,
                             ),
                             RotateAnimatedText(
-                              'CODEACADEMY',
+                              'SAMTUIT',
                               textStyle: animatedTextStyle,
                             ),
                             WavyAnimatedText(
-                              'CODEACADEMY',
+                              'SAMTUIT',
                               textStyle: animatedTextStyle,
                             )
                           ],
@@ -201,18 +202,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: height * 0.055,
                           child: ElevatedButton(
                             onPressed: () {
-                              // Provider.of<Login>(context, listen: false).login(username: usernameController.text, password: passwordController.text).then((value) {
-                                // if (value == "Hello, World!") {
+                              Provider.of<Login>(context, listen: false).login(username: usernameController.text, password: passwordController.text).then((value) {
+                                if (value == "Hello, World!") {
                                   context.goNamed(
                                     HomeScreen.routeName,
                                   );
-                                // } else {
-                                //   setState(() {
-                                //     errorMessage = value;
-                                //   });
-                                //   _formKey.currentState!.validate();
-                                // }
-                              // });
+                                } else {
+                                  setState(() {
+                                    errorMessage = value;
+                                  });
+                                  _formKey.currentState!.validate();
+                                }
+                              });
                             },
                             child: Text('Login'),
                           ),

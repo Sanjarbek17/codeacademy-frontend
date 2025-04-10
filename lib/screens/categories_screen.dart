@@ -68,7 +68,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   ),
                   const SizedBox(width: 10),
                   Text(
-                    widget.groupName != 'null' ? widget.groupName : 'CODEACADEMY',
+                    widget.groupName != 'null' ? widget.groupName : 'SAMTUIT',
                     style: GoogleFonts.monda(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                   const SizedBox(width: 10),

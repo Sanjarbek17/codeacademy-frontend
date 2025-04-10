@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:codeacademy/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -32,12 +33,17 @@ class AssignmentApi with ChangeNotifier {
   }
 
   Future<void> getAssignments(int id) async {
-    Uri url = Uri(scheme: 'https', host: 'lmsapi.pythonanywhere.com', path: 'lesson/assignment/$id/');
-    final response = await http.get(url);
-    List data = jsonDecode(response.body);
-    _allAssignment = data.map((e) => Assignment.getAssignment(e)).toList();
-    _lessonId = id;
-    notifyListeners();
+    String path = 'lesson/assignment/all/$id';
+    Uri url = Uri.parse('$baseUrl$path'); // Using baseUrl constant
+    try {
+      final response = await http.get(url);
+      List data = jsonDecode(response.body);
+      _allAssignment = data.map((e) => Assignment.getAssignment(e)).toList();
+      _lessonId = id;
+      notifyListeners();
+    } catch (e) {
+      print("error assignment: $e");
+    }
   }
 
   addAssingment(Assignment assignment) {

@@ -1,3 +1,4 @@
+import 'package:codeacademy/constants/samtuit_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
@@ -22,7 +23,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
       child: ListView(
         children: [
           DrawerHeader(
-            child: Image.network('https://telegra.ph/file/9aa2770b195550c2b113a.png'),
+            child: Image.network(logo),
           ),
           ExpansionPanelList.radio(
             children: courses

@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(width: 20),
                         Text(
-                          "CODEACADEMY",
+                          "SAMTUIT",
                           style: GoogleFonts.allertaStencil(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
