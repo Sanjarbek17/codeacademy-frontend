@@ -34,9 +34,9 @@ class GridItemNews extends StatelessWidget {
               height: 250,
               width: double.maxFinite,
               padding: const EdgeInsets.all(10),
-              child: Image.network(
-                image ?? 'https://epss.ucla.edu/static/images/default-news.png',
-                fit: BoxFit.fitWidth,
+              child: Image.asset(
+                image ?? 'assets/logo_url/default-news.png',
+                fit: BoxFit.cover,
               ),
             ),
             Container(

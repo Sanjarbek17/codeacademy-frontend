@@ -173,7 +173,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                     },
                   ),
                   FutureBuilder(
-                    future: Provider.of<StudentApi>(context, listen: false).getStudent(groupId: widget.id),
+                    future: Provider.of<StudentApi>(context, listen: false).getAllStudent(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
@@ -184,65 +184,39 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                           child: Text(snapshot.error.toString()),
                         );
                       }
-                      return ListView(
-                        children: [
-                          Card(
+                      return ListView.builder(
+                        itemCount: Provider.of<StudentApi>(context, listen: false).students.length,
+                        itemBuilder: (context, index) {
+                          final student = Provider.of<StudentApi>(context, listen: false).students[index];
+                          return Card(
                             margin: const EdgeInsets.all(10),
                             child: Padding(
                               padding: const EdgeInsets.all(15),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
+                                children: [
                                   Text(
-                                    'Name: John Doe',
-                                    style: TextStyle(
+                                    'Name: ${student.firstName} ${student.lastName}',
+                                    style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  SizedBox(height: 5),
+                                  const SizedBox(height: 5),
                                   Text(
-                                    'Subject: Mathematics',
-                                    style: TextStyle(fontSize: 16),
+                                    'Email: ${student.email}',
+                                    style: const TextStyle(fontSize: 16),
                                   ),
-                                  SizedBox(height: 5),
+                                  const SizedBox(height: 5),
                                   Text(
-                                    'Email: john.doe@example.com',
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Card(
-                            margin: const EdgeInsets.all(10),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                    'Name: Jane Smith',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  SizedBox(height: 5),
-                                  Text(
-                                    'Subject: Science',
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                  SizedBox(height: 5),
-                                  Text(
-                                    'Email: jane.smith@example.com',
-                                    style: TextStyle(fontSize: 16),
+                                    'Phone: ${student.phone}',
+                                    style: const TextStyle(fontSize: 16),
                                   ),
                                 ],
                               ),
                             ),
-                          ),
-                        ],
+                          );
+                        },
                       );
                     },
                   ),

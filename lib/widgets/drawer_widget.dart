@@ -1,11 +1,10 @@
 import 'package:codeacademy/constants/samtuit_logo.dart';
+import 'package:codeacademy/providers/teacher_api.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/course_api.dart';
-import '../providers/group_api.dart';
 import '../screens/categories_screen.dart';
 
 class DrawerWidget extends StatefulWidget {
@@ -63,86 +62,44 @@ class SubCategory extends StatefulWidget {
 class _SubCategoryState extends State<SubCategory> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: Provider.of<GroupApi>(context, listen: false).getGroup(widget.id),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Center(
-              child: SpinKitThreeInOut(
-                color: Colors.black,
-                size: 20,
-              ),
+    final teachers = Provider.of<TeacherApi>(context, listen: false).teachers;
+    return SizedBox(
+      height: 500,
+      child: ListView.builder(
+        itemCount: teachers.length,
+        itemBuilder: (context, index) {
+          final teacher = teachers[index];
+          return ListTile(
+            title: Text(
+              '${teacher.firstName} ${teacher.lastName}',
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-          );
-        } else if (snapshot.hasError) {
-          return Center(
-            child: Text(snapshot.error.toString()),
-          );
-        } else {
-          // print(groups);
-          return SizedBox(
-            height: 500,
-            child: ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                    snapshot.data![index].name,
-                  ),
-                  onTap: () async {
-                    Navigator.of(context).pop();
-                    context.goNamed(
-                      CategoriesScreen.routeName,
-                      pathParameters: {
-                        'id': snapshot.data![index].id.toString(),
-                      },
-                      extra: snapshot.data![index].name.toString(),
-                    );
-                    // showDialog(
-                    //   context: context,
-                    //   builder: (ctx) => const Center(
-                    //     child: CircularProgressIndicator.adaptive(),
-                    //   ),
-                    // );
-                    // await Provider.of<HomeworkApi>(context, listen: false)
-                    //     .getHomework(id:snapshot.data![index].id)
-                    //     .catchError(
-                    //   (error) {
-                    //     showDialog(
-                    //       context: context,
-                    //       builder: (context) => AlertDialog(
-                    //         title: const Text('Something went wrong!'),
-                    //         content: Text(error.toString()),
-                    //       ),
-                    //     );
-                    //   },
-                    // );
-                    // Navigator.pop(context);
-                    // Navigator.pop(context);
-                  },
-                );
-              },
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Phone: ${teacher.phone ?? "N/A"}',
+                  style: const TextStyle(color: Colors.grey),
+                ),
+                Text(
+                  'Email: ${teacher.email ?? "N/A"}',
+                  style: const TextStyle(color: Colors.grey),
+                ),
+              ],
             ),
+            onTap: () async {
+              Navigator.of(context).pop();
+              context.goNamed(
+                CategoriesScreen.routeName,
+                pathParameters: {
+                  'id': teacher.id.toString(),
+                },
+                extra: '${teacher.firstName} ${teacher.lastName}',
+              );
+            },
           );
-        }
-      },
+        },
+      ),
     );
   }
 }
-/* 
-ListView.builder(
-                    itemCount: categories.length,
-                    itemBuilder: (context, index) => ListTile(
-                      onTap: () {},
-                      leading: const Icon(Icons.payment_sharp),
-                      title: Text(
-                        categories[index],
-                        style: const TextStyle(),
-                      ),
-                      trailing:
-                          const Icon(Icons.arrow_drop_down_circle_outlined),
-                    ),
-                  ),
- */
