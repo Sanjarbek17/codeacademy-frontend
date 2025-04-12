@@ -2,76 +2,50 @@ import 'package:flutter/material.dart';
 
 import '../models/teacher.dart';
 
-class TeacherWidget extends StatefulWidget {
-  final List<Teacher> data;
-  const TeacherWidget({super.key, this.data = const []});
+class TeacherWidget extends StatelessWidget {
+  final List<Teacher> teachers;
 
-  @override
-  State<TeacherWidget> createState() => _TeacherWidgetState();
-}
+  const TeacherWidget({super.key, required this.teachers});
 
-class _TeacherWidgetState extends State<TeacherWidget> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Card(
+    if (teachers.isEmpty) {
+      return const Center(child: Text('No teachers available.'));
+    }
+
+    return ListView.builder(
+      itemCount: teachers.length,
+      itemBuilder: (context, index) {
+        final teacher = teachers[index];
+        return Card(
           margin: const EdgeInsets.all(10),
           child: Padding(
             padding: const EdgeInsets.all(15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
-                  'Name: John Doe',
-                  style: TextStyle(
+                  'Name: ${teacher.firstName}',
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Text(
-                  'Subject: Mathematics',
-                  style: TextStyle(fontSize: 16),
+                  'Subject: ${teacher.tgUsername}',
+                  style: const TextStyle(fontSize: 16),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Text(
-                  'Email: john.doe@example.com',
-                  style: TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Card(
-          margin: const EdgeInsets.all(10),
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  'Name: Jane Smith',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  'Subject: Physics',
-                  style: TextStyle(fontSize: 16),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  'Email: jane.smith@example.com',
-                  style: TextStyle(fontSize: 16),
+                  'Email: ${teacher.email}',
+                  style: const TextStyle(fontSize: 16),
                 ),
               ],
             ),
           ),
-        ),
-      ],
+        );
+      },
     );
   }
 }

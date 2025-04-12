@@ -1,32 +1,43 @@
-import 'package:flutter/material.dart';
+class Teacher {
+  final int id;
+  final String firstName;
+  final String lastName;
+  final String? email;
+  final String? phone;
+  final String? gitHub;
+  final String? codewars;
+  final String? tgUsername;
+  final String dateCreated;
+  final String dateUpdated;
+  final int type;
 
-class Teacher with ChangeNotifier {
-  String firstName;
-  String lastName;
-  String email;
-  String phone;
-  String gitHub;
-  int id;
-  String jobTitle;
   Teacher({
     required this.id,
     required this.firstName,
     required this.lastName,
-    required this.email,
-    required this.phone,
-    required this.gitHub,
-    required this.jobTitle,
+    this.email,
+    this.phone,
+    this.gitHub,
+    this.codewars,
+    this.tgUsername,
+    required this.dateCreated,
+    required this.dateUpdated,
+    required this.type,
   });
 
-  factory Teacher.getStudent(Map data) {
+  factory Teacher.fromJson(Map<String, dynamic> json) {
     return Teacher(
-      id: data['id'],
-      firstName: data['first_name'],
-      lastName: data['last_name'],
-      gitHub: data['github'],
-      email: data['email'],
-      phone: data['phone'],
-      jobTitle: data['job_title'],
+      id: json['id'] as int,
+      firstName: json['first_name'] as String,
+      lastName: json['last_name'] as String,
+      email: json['email'] as String?,
+      phone: json['phone'] as String?,
+      gitHub: json['github'] as String?,
+      codewars: json['codewars'] as String?,
+      tgUsername: json['tg_username'] as String?,
+      dateCreated: json['date_created'] as String,
+      dateUpdated: json['date_updated'] as String,
+      type: json['type'] as int,
     );
   }
 }

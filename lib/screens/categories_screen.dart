@@ -134,7 +134,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   FutureBuilder(
-                    future: Provider.of<StudentApi>(context, listen: false).getStudent(groupId: widget.id),
+                    future: Provider.of<TeacherApi>(context, listen: false).fetchTeachers(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
@@ -146,12 +146,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         );
                       }
                       return TeacherWidget(
-                        data: Provider.of<TeacherApi>(context, listen: false).teachers,
+                        teachers: Provider.of<TeacherApi>(context, listen: false).teachers,
                       );
                     },
                   ),
                   FutureBuilder(
-                    future: Provider.of<HomeworkApi>(context, listen: false).getHomework(id: widget.id),
+                    future: Provider.of<HomeworkApi>(context, listen: false).getAllLessons(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
@@ -166,11 +166,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         );
                       } else {
                         Provider.of<AssignmentApi>(context, listen: false).nullAssignment();
-                        return const Row(
-                          children: [
-                            // LessonTapWidget(),
-                            AssignmentWidget(),
-                          ],
+                        return AssignmentWidget(
+                          lessons: Provider.of<HomeworkApi>(context, listen: false).lessons,
                         );
                       }
                     },
