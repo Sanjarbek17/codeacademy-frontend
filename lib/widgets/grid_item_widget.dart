@@ -61,7 +61,10 @@ class GridItemWidget extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width / 8,
               height: MediaQuery.of(context).size.width / 8,
-              child: Image.network(logoLink),
+              child: Image.asset(
+                logoLink,
+                fit: BoxFit.cover,
+              ),
             ),
             const SizedBox(
               height: 50,

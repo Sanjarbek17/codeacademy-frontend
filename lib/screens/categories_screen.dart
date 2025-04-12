@@ -1,5 +1,3 @@
-import 'package:codeacademy/models/student.dart';
-import 'package:codeacademy/screens/add_student_screen.dart';
 import 'package:codeacademy/screens/news_screen.dart';
 import 'package:codeacademy/widgets/teacher_tap_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +12,6 @@ import '../providers/student_api.dart';
 import '../providers/teacher_api.dart';
 import '../widgets/assignment_widget.dart';
 import '../widgets/drawer_widget.dart';
-import '../widgets/lesson_tap_widget.dart';
-import '../widgets/student_tap_widget.dart';
 import 'login_screen.dart';
 
 class CategoriesScreen extends StatefulWidget {
@@ -86,9 +82,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         color: Color.fromARGB(255, 119, 115, 115),
                       ),
                       tabs: [
-                        Tab(text: 'Assignments'),
-                        Tab(text: 'Students'),
                         Tab(text: 'Teachers'),
+                        Tab(text: 'Ilmiy Ishlar'),
+                        Tab(text: 'Students'),
                       ],
                     ),
                   ),
@@ -138,6 +134,23 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   FutureBuilder(
+                    future: Provider.of<StudentApi>(context, listen: false).getStudent(groupId: widget.id),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (snapshot.hasError) {
+                        return Center(
+                          child: Text(snapshot.error.toString()),
+                        );
+                      }
+                      return TeacherWidget(
+                        data: Provider.of<TeacherApi>(context, listen: false).teachers,
+                      );
+                    },
+                  ),
+                  FutureBuilder(
                     future: Provider.of<HomeworkApi>(context, listen: false).getHomework(id: widget.id),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
@@ -155,7 +168,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         Provider.of<AssignmentApi>(context, listen: false).nullAssignment();
                         return const Row(
                           children: [
-                            LessonTapWidget(),
+                            // LessonTapWidget(),
                             AssignmentWidget(),
                           ],
                         );
@@ -176,158 +189,63 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       }
                       return ListView(
                         children: [
-                          StudentTapWidget(
-                            data: Provider.of<StudentApi>(context, listen: false).students,
-                          ),
-                          const SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ActionChip(
-                                  label: const Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Text('Add Student to Codeacademy'),
+                          Card(
+                            margin: const EdgeInsets.all(10),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    'Name: John Doe',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                  onPressed: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          title: const Text('Create student'),
-                                          content: Column(
-                                            children: [
-                                              TextField(
-                                                controller: firstName,
-                                                decoration: const InputDecoration(
-                                                  hintText: 'First name*',
-                                                ),
-                                                onChanged: (value) {},
-                                              ),
-                                              TextField(
-                                                controller: lastName,
-                                                decoration: const InputDecoration(
-                                                  hintText: 'Last name*',
-                                                ),
-                                                onChanged: (value) {},
-                                              ),
-                                              TextField(
-                                                controller: phoneNumber,
-                                                decoration: const InputDecoration(
-                                                  hintText: 'Phone number*',
-                                                ),
-                                                onChanged: (value) {},
-                                              ),
-                                              TextField(
-                                                controller: github,
-                                                decoration: const InputDecoration(
-                                                  hintText: 'Github username*',
-                                                ),
-                                                onChanged: (value) {},
-                                              ),
-                                              TextField(
-                                                controller: codewars,
-                                                decoration: const InputDecoration(
-                                                  hintText: 'Codewars username',
-                                                ),
-                                                onChanged: (value) {},
-                                              ),
-                                              TextField(
-                                                controller: email,
-                                                decoration: const InputDecoration(
-                                                  hintText: 'Email*',
-                                                ),
-                                                onChanged: (value) {},
-                                              ),
-                                              TextField(
-                                                controller: tgUsername,
-                                                decoration: const InputDecoration(
-                                                  hintText: 'Telegram username*',
-                                                ),
-                                                onChanged: (value) {},
-                                              ),
-                                            ],
-                                          ),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: const Text('Cancel'),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                Provider.of<StudentApi>(context, listen: false)
-                                                    .createStudent(Student(
-                                                  id: null,
-                                                  firstName: firstName.text,
-                                                  email: email.text,
-                                                  gitHub: github.text,
-                                                  lastName: lastName.text,
-                                                  phone: phoneNumber.text,
-                                                  codeWars: codewars.text,
-                                                  tgUsername: tgUsername.text,
-                                                ))
-                                                    .then((value) {
-                                                  if (value == 200 || value == 201) {
-                                                    Navigator.of(context).pop();
-                                                  } else {
-                                                    Navigator.of(context).pop();
-                                                    setState(() {});
-                                                    ScaffoldMessenger.of(context).showSnackBar(
-                                                      SnackBar(
-                                                        content: Text('$value'),
-                                                      ),
-                                                    );
-                                                  }
-                                                });
-                                              },
-                                              child: const Text('Create'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  }),
-                              const SizedBox(width: 10),
-                              ActionChip(
-                                label: const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text('Add student this group'),
-                                ),
-                                onPressed: () {
-                                  context.goNamed(AddStudentScreen.routeName, extra: {
-                                    'groupId': '${widget.id}',
-                                    'students': Provider.of<StudentApi>(context, listen: false).students,
-                                    'id': widget.id,
-                                  });
-                                  // showDialog(
-                                  //   context: context,
-                                  //   builder: (context) => StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
-                                  //     return CustomDialog(groupId: widget.id);
-                                  //   }),
-                                  // );
-                                },
+                                  SizedBox(height: 5),
+                                  Text(
+                                    'Subject: Mathematics',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    'Email: john.doe@example.com',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
+                          ),
+                          Card(
+                            margin: const EdgeInsets.all(10),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    'Name: Jane Smith',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    'Subject: Science',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    'Email: jane.smith@example.com',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ],
-                      );
-                    },
-                  ),
-                  FutureBuilder(
-                    future: Provider.of<StudentApi>(context, listen: false).getStudent(groupId: widget.id),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      } else if (snapshot.hasError) {
-                        return Center(
-                          child: Text(snapshot.error.toString()),
-                        );
-                      }
-                      return TeacherWidget(
-                        data: Provider.of<TeacherApi>(context, listen: false).teachers,
                       );
                     },
                   ),
