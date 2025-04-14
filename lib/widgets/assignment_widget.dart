@@ -1,3 +1,4 @@
+import 'package:codeacademy/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
 
@@ -10,10 +11,11 @@ class AssignmentWidget extends StatelessWidget {
 
   Future<void> _downloadFile(String url) async {
     try {
+      final fullUrl = '$baseUrl$url';
       // Trigger the browser to download the file
-      html.AnchorElement anchor = html.AnchorElement(href: url)
+      html.AnchorElement anchor = html.AnchorElement(href: fullUrl)
         ..target = 'blank'
-        ..download = url.split('/').last;
+        ..download = fullUrl.split('/').last;
       anchor.click();
     } catch (e) {
       debugPrint('Error downloading file: $e');
