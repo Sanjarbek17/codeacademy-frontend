@@ -81,9 +81,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         color: Color.fromARGB(255, 119, 115, 115),
                       ),
                       tabs: [
-                        Tab(text: 'Teachers'),
+                        Tab(text: 'Professorlar'),
                         Tab(text: 'Ilmiy Ishlar'),
-                        Tab(text: 'Students'),
+                        Tab(text: 'O\'quvchilar'),
                       ],
                     ),
                   ),
@@ -195,7 +195,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Name: ${student.firstName} ${student.lastName}',
+                                    'Ism: ${student.firstName} ${student.lastName}',
                                     style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -208,7 +208,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                   ),
                                   const SizedBox(height: 5),
                                   Text(
-                                    'Phone: ${student.phone}',
+                                    'Telefon: ${student.phone}',
                                     style: const TextStyle(fontSize: 16),
                                   ),
                                 ],

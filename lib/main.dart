@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: 'CodeAcademy',
+        title: 'Sam Tuit',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

@@ -10,7 +10,7 @@ class TeacherWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (teachers.isEmpty) {
-      return const Center(child: Text('No teachers available.'));
+      return const Center(child: Text('Professorlar mavjud emas.'));
     }
 
     return ListView.builder(
@@ -25,7 +25,7 @@ class TeacherWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Name: ${teacher.firstName}',
+                  'Ismi: ${teacher.firstName}',
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -33,7 +33,7 @@ class TeacherWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  'Subject: ${teacher.tgUsername}',
+                  'telegram: ${teacher.tgUsername}',
                   style: const TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 5),

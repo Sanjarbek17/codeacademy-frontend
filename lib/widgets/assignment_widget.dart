@@ -26,7 +26,7 @@ class AssignmentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (lessons.isEmpty) {
       return const Center(
-        child: Text('No lessons available.'),
+        child: Text('Ilmiy ishlar mavjud emas.'), // Translated to Uzbek
       );
     }
 
@@ -40,7 +40,7 @@ class AssignmentWidget extends StatelessWidget {
               _downloadFile(lesson.fileUrl!);
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('No file available for download.')),
+                const SnackBar(content: Text('Yuklab olish uchun fayl mavjud emas.')), // Translated to Uzbek
               );
             }
           },
@@ -52,7 +52,7 @@ class AssignmentWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Lesson: ${lesson.name}',
+                    'Ilmiy Ish: ${lesson.name}', // Changed "Lesson" to "Ilmiy Ish"
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -61,7 +61,7 @@ class AssignmentWidget extends StatelessWidget {
                   const SizedBox(height: 5),
                   if (lesson.description != null)
                     Text(
-                      'Description: ${lesson.description}',
+                      'Tavsif: ${lesson.description}', // Translated "Description" to "Tavsif"
                       style: const TextStyle(fontSize: 16),
                     ),
                 ],
