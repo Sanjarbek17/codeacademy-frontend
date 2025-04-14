@@ -42365,7 +42365,7 @@ A.pb.prototype={
 wi(){var s=0,r=A.Q(t.H),q=1,p=[],o=this,n,m,l,k,j,i,h
 var $async$wi=A.M(function(a,b){if(a===1){p.push(b)
 s=q}while(true)switch(s){case 0:A.jH("getting course")
-n=A.cR("http://127.0.0.1:8000//course/",0,null)
+n=A.cR("https://sanjar1718.pythonanywhere.com//course/",0,null)
 q=3
 s=6
 return A.T(A.a0y(n,null),$async$wi)
@@ -42400,7 +42400,7 @@ A.Uq.prototype={}
 A.pL.prototype={
 wf(){var s=0,r=A.Q(t.H),q=1,p=[],o=this,n,m,l,k,j,i
 var $async$wf=A.M(function(a,b){if(a===1){p.push(b)
-s=q}while(true)switch(s){case 0:j=A.cR("http://127.0.0.1:8000/lesson/all-lessons/",0,null)
+s=q}while(true)switch(s){case 0:j=A.cR("https://sanjar1718.pythonanywhere.com/lesson/all-lessons/",0,null)
 q=3
 s=6
 return A.T(A.a0y(j,null),$async$wf)
@@ -42435,7 +42435,7 @@ A.q8.prototype={
 AN(a,b){return this.apH(a,b)},
 apH(a,b){var s=0,r=A.Q(t.N),q,p,o,n,m,l
 var $async$AN=A.M(function(c,d){if(c===1)return A.N(d,r)
-while(true)switch(s){case 0:p=A.cR("http://127.0.0.1:8000/login/",0,null)
+while(true)switch(s){case 0:p=A.cR("https://sanjar1718.pythonanywhere.com/login/",0,null)
 o=B.c9.cL(b+":"+a)
 n=t.N
 s=3
@@ -42484,7 +42484,7 @@ A.re.prototype={
 wg(){var s=0,r=A.Q(t.H),q=this,p,o
 var $async$wg=A.M(function(a,b){if(a===1)return A.N(b,r)
 while(true)switch(s){case 0:s=2
-return A.T(A.a0y(A.cR("http://127.0.0.1:8000/student/all/",0,null),null),$async$wg)
+return A.T(A.a0y(A.cR("https://sanjar1718.pythonanywhere.com/student/all/",0,null),null),$async$wg)
 case 2:p=b
 o=J.i3(B.aH.qd(0,A.IT(J.b8(A.IN(p.e).c.a,"charset")).dR(0,p.w),null),new A.ak_(),t.Uz)
 q.a=A.a3(o,!0,o.$ti.i("ar.E"))
@@ -42497,7 +42497,7 @@ var $async$z4=A.M(function(c,d){if(c===1)return A.N(d,r)
 while(true)switch(s){case 0:p=t.N
 o=A.az(["Content-Type","application/json"],p,p)
 s=3
-return A.T(A.aI3(A.cR("http://127.0.0.1:8000/"+("add-students-to-group/"+a+"/"),0,null),B.aH.ml(A.az(["students",b],p,t.Cm)),o),$async$z4)
+return A.T(A.aI3(A.cR("https://sanjar1718.pythonanywhere.com/"+("add-students-to-group/"+a+"/"),0,null),B.aH.ml(A.az(["students",b],p,t.Cm)),o),$async$z4)
 case 3:q=d.b
 s=1
 break
@@ -42516,7 +42516,7 @@ A.rh.prototype={
 zZ(){var s=0,r=A.Q(t.H),q=1,p=[],o=this,n,m,l,k,j,i
 var $async$zZ=A.M(function(a,b){if(a===1){p.push(b)
 s=q}while(true)switch(s){case 0:A.jH("Fetching teachers...")
-n=A.cR("http://127.0.0.1:8000//get-all-teacher/",0,null)
+n=A.cR("https://sanjar1718.pythonanywhere.com//get-all-teacher/",0,null)
 q=3
 s=6
 return A.T(A.a0y(n,null),$async$zZ)
