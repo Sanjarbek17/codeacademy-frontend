@@ -31,21 +31,11 @@ class GridItemWidget extends StatelessWidget {
             ),
           ),
         );
-        await Provider.of<GroupApi>(context, listen: false).getGroup(item.id);
+        // await Provider.of<GroupApi>(context, listen: false).getGroup(item.id);
         Navigator.pop(context);
-        if (Provider.of<GroupApi>(context, listen: false).groups.isEmpty) {
-          print('empty group');
-          return;
-        }
-        Provider.of<AssignmentApi>(context, listen: false).onVisible(false);
-        Provider.of<AssignmentApi>(context, listen: false).nullAssignment();
-        context.goNamed(
-          CategoriesScreen.routeName,
-          pathParameters: {
-            'id': Provider.of<GroupApi>(context, listen: false).groups[0].id.toString(),
-          },
-          extra: Provider.of<GroupApi>(context, listen: false).groups[0].name.toString(),
-        );
+        // Provider.of<AssignmentApi>(context, listen: false).onVisible(false);
+        // Provider.of<AssignmentApi>(context, listen: false).nullAssignment();
+        context.goNamed(CategoriesScreen.routeName);
       },
       child: Container(
         decoration: BoxDecoration(

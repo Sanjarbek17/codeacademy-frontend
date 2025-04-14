@@ -60,12 +60,9 @@ class MyApp extends StatelessWidget {
                   builder: (context, state) => const HomeScreen(),
                   routes: [
                     GoRoute(
-                      path: 'category/:id',
+                      path: 'category',
                       name: CategoriesScreen.routeName,
-                      builder: (context, state) => CategoriesScreen(
-                        id: int.parse(state.pathParameters['id'] as String),
-                        groupName: state.extra.toString(),
-                      ),
+                      builder: (context, state) => CategoriesScreen(),
                       routes: [
                         GoRoute(
                           path: 'results/:assignmentId/:lessonId',

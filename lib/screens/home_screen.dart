@@ -18,10 +18,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<String> logoUrls = [
     'assets/logo_url/7.jpeg',
-    'assets/logo_url/2.png',
-    'assets/logo_url/3.png',
-    'assets/logo_url/4.png',
-    'assets/logo_url/5.png',
+    'assets/logo_url/7.jpeg',
+    'assets/logo_url/7.jpeg',
+    'assets/logo_url/7.jpeg',
+    'assets/logo_url/7.jpeg',
+    'assets/logo_url/7.jpeg',
   ];
   @override
   Widget build(BuildContext context) {

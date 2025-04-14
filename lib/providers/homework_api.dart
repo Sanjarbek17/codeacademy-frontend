@@ -6,13 +6,13 @@ import 'package:http/http.dart' as http;
 
 import '../models/lesson.dart';
 
-
 class HomeworkApi with ChangeNotifier {
   List<Lesson> _homeworks = [];
   List<Lesson> _lessons = [];
   List<Lesson> get homeworks {
     return _homeworks;
   }
+
   List<Lesson> get lessons {
     return _lessons;
   }
@@ -38,6 +38,7 @@ class HomeworkApi with ChangeNotifier {
       http.Response response = await http.get(url);
 
       List dataFromJson = jsonDecode(response.body);
+      print(dataFromJson);
       _lessons = dataFromJson.map((e) => Lesson.getLesson(e)).toList();
     } catch (_) {
       rethrow;

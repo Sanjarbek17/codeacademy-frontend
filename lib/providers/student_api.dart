@@ -9,7 +9,6 @@ import 'package:http/http.dart' as http;
 import '../models/student.dart';
 
 class StudentApi with ChangeNotifier {
-
   List<Student> _students = [];
   List<Student> get students {
     return _students;
@@ -62,8 +61,6 @@ class StudentApi with ChangeNotifier {
     Map body = {
       "first_name": item.firstName,
       "last_name": item.lastName,
-      "github": item.gitHub,
-      "codewars": item.codeWars,
       "phone": item.phone,
       "email": item.email,
       "tg_username": item.tgUsername,

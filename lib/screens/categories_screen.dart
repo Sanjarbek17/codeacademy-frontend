@@ -15,9 +15,8 @@ import '../widgets/drawer_widget.dart';
 import 'login_screen.dart';
 
 class CategoriesScreen extends StatefulWidget {
-  final int id;
-  final String groupName;
-  const CategoriesScreen({super.key, required this.id, required this.groupName});
+  // final int id;s
+  const CategoriesScreen({super.key});
   static const routeName = 'categoriesScreen';
 
   @override
@@ -64,7 +63,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   ),
                   const SizedBox(width: 10),
                   Text(
-                    widget.groupName != 'null' ? widget.groupName : 'SAMTUIT',
+                    'SAMTUIT',
                     style: GoogleFonts.monda(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                   const SizedBox(width: 10),
